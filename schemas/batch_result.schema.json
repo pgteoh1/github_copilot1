@@ -12,7 +12,8 @@
   ],
   "properties": {
     "generated_at": {
-      "type": "string"
+      "type": "string",
+      "format": "date-time"
     },
     "station_filter": {
       "type": [

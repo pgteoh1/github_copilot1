@@ -20,11 +20,7 @@ def _matches_station_filter(file_name: str, station: str) -> bool:
         return False
 
     extracted_station = _extract_station_from_filename(file_name)
-    if extracted_station and extracted_station.lower() == station_token:
-        return True
-
-    tokens = [token for token in re.split(r"[^a-z0-9]+", Path(file_name).stem.lower()) if token]
-    return station_token in tokens
+    return bool(extracted_station and extracted_station.lower() == station_token)
 
 
 def discover_files(data_dir: Path, station: str | None = None) -> list[Path]:

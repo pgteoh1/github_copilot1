@@ -7,13 +7,12 @@ from pathlib import Path
 
 def _extract_station_from_filename(file_name: str) -> str | None:
     stem = Path(file_name).stem.lower()
-    match = re.search(r"(?:^|[^a-z0-9])station[-_]?([a-z0-9]+)(?:$|[^a-z0-9])", stem)
-    if match:
-        return match.group(1).upper()
-
     tokens = [token for token in re.split(r"[^a-z0-9]+", stem) if token]
-    if len(tokens) > 1 and tokens[0] == "station":
-        return tokens[1].upper()
+    for index, token in enumerate(tokens):
+        if token == "station" and index + 1 < len(tokens):
+            return tokens[index + 1].upper()
+        if token.startswith("station") and len(token) > len("station"):
+            return token[len("station"):].upper()
     return None
 
 

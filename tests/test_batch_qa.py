@@ -21,6 +21,8 @@ def test_generate_batch_report_processes_all_files_without_station_filter(tmp_pa
 
     assert report["station_filter"] is None
     assert report["processed_count"] == 2
+    assert report["passed_count"] == 2
+    assert report["failed_count"] == 0
     assert {item["file"] for item in report["results"]} == {
         "station-A-001.json",
         "station-B-002.json",

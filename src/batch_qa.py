@@ -43,7 +43,7 @@ def generate_batch_report(
         station_name = _extract_station_from_filename(file_path.name)
         try:
             with file_path.open("r", encoding="utf-8") as file:
-                json.load(file)
+                _ = json.load(file)
 
             results.append(
                 {

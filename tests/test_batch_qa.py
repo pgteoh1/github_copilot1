@@ -41,6 +41,7 @@ def test_generate_batch_report_filters_by_station(tmp_path: Path):
 
     assert report["station_filter"] == "A"
     assert report["processed_count"] == 2
+    assert report["passed_count"] == 2
     assert report["failed_count"] == 0
     assert {item["file"] for item in report["results"]} == {
         "station-A-001.json",

@@ -11,8 +11,6 @@ def _extract_station_from_filename(file_name: str) -> str | None:
     for index, token in enumerate(tokens):
         if token == "station" and index + 1 < len(tokens):
             return tokens[index + 1].upper()
-        if token.startswith("station") and len(token) > len("station"):
-            return token[len("station"):].upper()
     return None
 
 
